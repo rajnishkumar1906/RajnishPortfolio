@@ -1,61 +1,40 @@
 import React from "react";
 import { skills } from "../data/portfolioData";
 
-const Skills = () => {
-  // OPTIONAL: auto-group categories if your list contains labels
-  const categories = {
-    "Frontend": ["React", "Next.js", "Tailwind CSS"],
-    "Backend": ["Node.js", "Express", "MongoDB" ,"Flask"],
-    "AI / ML": ["Python", "LangChain", "Computer Vision", "Deep Learning","RAG"],
-    "Tools & DevOps": ["Git", "REST APIs", "Docker"]
+function Skills() {
+  // Group skills by category
+  const skillCategories = {
+    "Programming Languages": skills.slice(0, 5),
+    "Web & Frontend": skills.slice(5, 11),
+    "Backend & APIs": skills.slice(11, 18),
+    "Databases & Caching": skills.slice(18, 26),
+    "AI / Machine Learning": skills.slice(26, 38),
+    "LLM & AI Agents": skills.slice(38, 46),
+    "DevOps & Tools": skills.slice(46, 54),
+    "Core CS Fundamentals": skills.slice(54, 58)
   };
 
   return (
-    <section
-      id="skills"
-      className="min-h-screen px-6 pt-24 bg-white dark:bg-[#0b0b0b]"
-    >
+    <section id="skills" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-12">
+          Technical <span className="text-white/70">Skills</span>
+        </h2>
 
-        {/* Section Title */}
-        <div className="text-center mb-14">
-          <h2 className="text-4xl font-extrabold text-black dark:text-white">
-            Skills & <span className="text-green-600">Technologies</span>
-          </h2>
-
-          <p className="text-gray-600 dark:text-gray-300 mt-3">
-            A blend of engineering depth, practical problem-solving, and product-focused development.
-          </p>
-        </div>
-
-        {/* Skill Categories */}
-        <div className="grid md:grid-cols-2 gap-8">
-          {Object.entries(categories).map(([title, list]) => (
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {Object.entries(skillCategories).map(([category, categorySkills]) => (
             <div
-              key={title}
-              className="border rounded-2xl p-6 bg-white dark:bg-[#0f0f0f]
-                         shadow-sm hover:shadow-md transition"
+              key={category}
+              className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6 hover:bg-white/15 transition-all duration-300"
             >
-              {/* Header */}
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-black dark:text-white">
-                  {title}
-                </h3>
-
-                <span className="w-2/12 h-[3px] bg-green-600 rounded-full"></span>
-              </div>
-
-              {/* Skill Pills */}
+              <h3 className="text-xl font-semibold mb-4 pb-2 border-b border-white/20">
+                {category}
+              </h3>
               <div className="flex flex-wrap gap-2">
-                {list.map((skill) => (
+                {categorySkills.map((skill, index) => (
                   <span
-                    key={skill}
-                    className="px-3 py-1 text-sm rounded-full
-                               border border-gray-300 text-gray-800
-                               dark:border-gray-600 dark:text-gray-200
-                               hover:border-green-600 hover:text-green-700
-                               dark:hover:border-green-500 dark:hover:text-green-400
-                               transition"
+                    key={index}
+                    className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-sm border border-white/30 hover:bg-white/30 transition-all duration-300"
                   >
                     {skill}
                   </span>
@@ -64,10 +43,9 @@ const Skills = () => {
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
-};
+}
 
 export default Skills;

@@ -1,62 +1,122 @@
-import React, { useState } from "react";
-import { Menu, X } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { personalInfo } from "../data/portfolioData";
 
-const Navbar = () => {
-  const [open, setOpen] = useState(false);
-  const items = ["home", "about", "skills", "projects", "contact"];
+function Navbar() {
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const go = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-    setOpen(false);
-  };
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: "Home", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <nav className="fixed top-0 w-full bg-white/95 backdrop-blur border-b z-50">
-      <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+    <nav
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+        scrolled
+          ? "backdrop-blur-md bg-white/10 border-b border-white/20 shadow-lg"
+          : "backdrop-blur-sm bg-transparent"
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo */}
+          <a
+            href="#"
+            className="text-2xl font-bold bg-gradient-to-r from-white to-white/70 bg-clip-text text-transparent"
+          >
+            {personalInfo.name.split(" ")[0]}
+            <span className="text-white/50">.</span>
+          </a>
 
-        {/* LOGO */}
-        <span className="text-2xl font-bold tracking-tight text-black">
-          <span className="text-green-600">R</span>ajnish
-        </span>
-
-        {/* DESKTOP NAV */}
-        <div className="hidden md:flex gap-8">
-          {items.map((i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              className="text-gray-800 font-medium hover:text-green-700 relative group"
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="text-white/80 hover:text-white transition-colors duration-300 text-sm font-medium tracking-wide"
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href={personalInfo.resume}
+              className="backdrop-blur-md bg-white/20 border border-white/30 px-5 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              {i.charAt(0).toUpperCase() + i.slice(1)}
+              Resume
+            </a>
+          </div>
 
-              <span className="absolute left-0 bottom-[-4px] w-0 h-[2px]
-                               bg-green-600 group-hover:w-full transition-all"></span>
-            </button>
-          ))}
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="md:hidden text-white/80 hover:text-white"
+          >
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {isOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
 
-        {/* MOBILE MENU BUTTON */}
-        <button onClick={() => setOpen(!open)} className="md:hidden text-gray-900">
-          {open ? <X /> : <Menu />}
-        </button>
+        {/* Mobile Menu */}
+        {isOpen && (
+          <div className="md:hidden backdrop-blur-md bg-white/10 border-t border-white/20 py-4 px-4 rounded-b-2xl">
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                className="block py-2 text-white/80 hover:text-white transition-colors duration-300"
+                onClick={() => setIsOpen(false)}
+              >
+                {link.name}
+              </a>
+            ))}
+            <a
+              href={personalInfo.resume}
+              className="block mt-2 backdrop-blur-md bg-white/20 border border-white/30 px-5 py-2 rounded-full text-sm font-medium hover:bg-white/30 transition-all duration-300 text-center"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Resume
+            </a>
+          </div>
+        )}
       </div>
-
-      {/* MOBILE MENU */}
-      {open && (
-        <div className="md:hidden bg-white border-t px-6 py-4 space-y-3">
-          {items.map((i) => (
-            <button
-              key={i}
-              onClick={() => go(i)}
-              className="block w-full text-left text-gray-800 font-medium"
-            >
-              {i.charAt(0).toUpperCase() + i.slice(1)}
-            </button>
-          ))}
-        </div>
-      )}
     </nav>
   );
-};
+}
 
 export default Navbar;

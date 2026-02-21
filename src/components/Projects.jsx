@@ -1,104 +1,119 @@
-import React from "react";
-import { Github, ExternalLink } from "lucide-react";
+import React, { useState } from "react";
 import { projects } from "../data/portfolioData";
 
-const Projects = () => {
+function Projects() {
+  const [filter, setFilter] = useState("All");
+  const categories = ["All", "Full Stack", "AI/ML", "Computer Vision", "Mobile"];
+
+  const filteredProjects = filter === "All" 
+    ? projects 
+    : projects.filter(project => project.category === filter);
+
   return (
-    <section
-      id="projects"
-      className="min-h-screen px-6 pt-24 pb-16 bg-white dark:bg-[#0b0b0b]"
-    >
+    <section id="projects" className="py-20 px-6">
       <div className="max-w-6xl mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-4">
+          Featured <span className="text-white/70">Projects</span>
+        </h2>
+        <p className="text-center text-white/60 mb-8">
+          {projects.length} projects and counting...
+        </p>
 
-        {/* Section Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-extrabold text-black dark:text-white">
-            Featured <span className="text-green-600">Projects</span>
-          </h2>
-
-          <p className="text-gray-600 dark:text-gray-300 mt-3">
-            A selection of real-world products, research systems and AI applications I’ve built.
-          </p>
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-5 py-2 rounded-full backdrop-blur-md border transition-all duration-300 ${
+                filter === cat
+                  ? "bg-white/30 border-white/50 text-white"
+                  : "bg-white/10 border-white/20 text-white/70 hover:bg-white/20"
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
         </div>
 
-        {/* Card Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+        {/* Projects Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="border rounded-2xl overflow-hidden bg-white dark:bg-[#0f0f0f]
-                         shadow-sm hover:shadow-xl hover:-translate-y-1
-                         transition duration-300"
+              className="group backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl overflow-hidden hover:bg-white/15 transition-all duration-300"
             >
-              {/* IMAGE */}
-              <div className="h-44 w-full overflow-hidden">
+              {/* Project Image */}
+              <div className="relative h-48 overflow-hidden">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover hover:scale-105 transition duration-300"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  onError={(e) => {
+                    e.target.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=900";
+                  }}
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <span className="absolute top-3 right-3 backdrop-blur-md bg-white/30 px-3 py-1 rounded-full text-xs border border-white/40">
+                  {project.category}
+                </span>
+                <span className="absolute bottom-3 left-3 backdrop-blur-md bg-black/30 px-3 py-1 rounded-full text-xs border border-white/20">
+                  {project.year}
+                </span>
               </div>
 
-              {/* CONTENT */}
-              <div className="p-5">
-                <h3 className="text-xl font-bold text-black dark:text-white mb-1">
-                  {project.title}
-                </h3>
-
-                <p className="text-gray-600 dark:text-gray-300 text-sm leading-relaxed mb-4">
+              {/* Project Info */}
+              <div className="p-6">
+                <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                <p className="text-white/70 text-sm mb-4 line-clamp-2">
                   {project.description}
                 </p>
 
-                {/* TECHNOLOGIES */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.technologies.map((t, i) => (
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-4">
+                  {project.technologies.slice(0, 3).map((tech, idx) => (
                     <span
-                      key={i}
-                      className="px-3 py-[6px] text-xs rounded-full
-                                 border border-gray-300 dark:border-gray-600
-                                 text-gray-700 dark:text-gray-200"
+                      key={idx}
+                      className="px-2 py-1 bg-white/10 rounded text-xs border border-white/20"
                     >
-                      {t}
+                      {tech}
                     </span>
                   ))}
+                  {project.technologies.length > 3 && (
+                    <span className="px-2 py-1 bg-white/10 rounded text-xs border border-white/20">
+                      +{project.technologies.length - 3}
+                    </span>
+                  )}
                 </div>
 
-                {/* ACTION BUTTONS */}
-                <div className="flex justify-between items-center">
-
+                {/* Links */}
+                <div className="flex gap-3">
                   <a
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-gray-800 dark:text-gray-200
-                               hover:text-green-600 transition"
+                    className="flex-1 text-center backdrop-blur-md bg-white/20 border border-white/30 px-4 py-2 rounded-lg text-sm hover:bg-white/30 transition-all duration-300"
                   >
-                    <Github size={18} />
                     Code
                   </a>
-
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2
-                               bg-green-600 hover:bg-green-700
-                               text-white px-4 py-2 rounded-full text-sm transition"
-                  >
-                    <ExternalLink size={16} />
-                    Live Demo
-                  </a>
-
+                  {project.demo !== "#" && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 text-center backdrop-blur-md bg-white/30 border border-white/40 px-4 py-2 rounded-lg text-sm hover:bg-white/40 transition-all duration-300"
+                    >
+                      Demo
+                    </a>
+                  )}
                 </div>
-
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
-};
+}
 
 export default Projects;

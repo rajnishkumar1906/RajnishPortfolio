@@ -1,112 +1,84 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { personalInfo } from "../data/portfolioData";
-import { ArrowRight, FileDown } from "lucide-react";
 
-const Hero = () => {
-  const [stars, setStars] = useState([]);
-
-  useEffect(() => {
-    const generatedStars = Array.from({ length: 120 }).map(() => ({
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 2 + 1,
-      opacity: Math.random(),
-      delay: Math.random() * 3,
-    }));
-
-    setStars(generatedStars);
-  }, []);
-
+function Hero() {
   return (
-    <section
-      id="home"
-      className="
-        relative min-h-screen flex items-center justify-center px-6 pt-24
-        bg-black text-white overflow-hidden
-      "
-    >
-      {/* ⭐ STARRY BACKGROUND */}
-      <div className="absolute inset-0">
-        {stars.map((s, i) => (
-          <span
-            key={i}
-            className="absolute rounded-full animate-twinkle"
-            style={{
-              left: `${s.x}%`,
-              top: `${s.y}%`,
-              width: `${s.size}px`,
-              height: `${s.size}px`,
-              background: "white",
-              opacity: s.opacity,
-              animationDelay: `${s.delay}s`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* ⭐ TWINKLE ANIMATION */}
-      <style>{`
-        @keyframes twinkle {
-          0% { opacity: 0.2; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.4); }
-          100% { opacity: 0.2; transform: scale(1); }
-        }
-        .animate-twinkle {
-          animation: twinkle 3s infinite ease-in-out;
-        }
-      `}</style>
-
-      {/* FOREGROUND CONTENT */}
-      <div className="relative max-w-4xl mx-auto text-center">
-
-        {/* Profile Image */}
-        <div className="flex justify-center mb-8">
-          <div className="w-44 h-44 rounded-full overflow-hidden border-4 border-green-500 shadow-lg">
+    <section id="home" className="min-h-screen flex items-center justify-center px-6 py-20">
+      <div className="max-w-4xl mx-auto text-center">
+        {/* Glassmorphism card */}
+        <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-3xl p-12 shadow-2xl">
+          <div className="mb-8">
             <img
               src={personalInfo.avatar}
-              alt="Profile"
-              className="w-full h-full object-cover"
+              alt={personalInfo.name}
+              className="w-32 h-32 rounded-full mx-auto border-4 border-white/30 shadow-xl"
             />
           </div>
-        </div>
-
-        <p className="text-gray-300">
-          Hello — I’m <span className="font-semibold">{personalInfo.name}</span>
-        </p>
-
-        <h1 className="text-4xl sm:text-5xl font-extrabold mt-2 leading-tight">
-          Full Stack Developer
-          <span className="text-green-400"> & AI Engineer</span>
-        </h1>
-
-        <p className="text-gray-400 max-w-2xl mx-auto mt-4 text-[17px]">
-          Building scalable products and AI-powered systems with real-world impact.
-        </p>
-
-        <div className="flex justify-center gap-4 mt-10 flex-wrap">
-
-          <a
-            href="#contact"
-            className="bg-green-600 hover:bg-green-700 text-white font-semibold
-                       px-8 py-3 rounded-full flex items-center gap-2 shadow-md"
-          >
-            Contact Me <ArrowRight size={16} />
-          </a>
-
-          <a
-            href={personalInfo.resume}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="border-2 border-gray-300 text-white hover:bg-white/10
-                       font-semibold px-8 py-3 rounded-full flex items-center gap-2"
-          >
-            View Resume <FileDown size={16} />
-          </a>
-
+          
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">
+            {personalInfo.name}
+          </h1>
+          
+          <h2 className="text-xl md:text-2xl text-white/90 mb-6">
+            {personalInfo.title}
+          </h2>
+          
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-8">
+            {personalInfo.tagline}
+          </p>
+          
+          <div className="flex flex-wrap gap-4 justify-center">
+            <a
+              href="#contact"
+              className="backdrop-blur-md bg-white/30 border border-white/40 px-8 py-3 rounded-full font-medium hover:bg-white/40 transition-all duration-300"
+            >
+              Get in touch
+            </a>
+            <a
+              href={personalInfo.resume}
+              className="backdrop-blur-md bg-transparent border border-white/40 px-8 py-3 rounded-full font-medium hover:bg-white/20 transition-all duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Resume
+            </a>
+          </div>
+          
+          {/* Social Links */}
+          <div className="flex gap-4 justify-center mt-8">
+            <a
+              href={personalInfo.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="backdrop-blur-md bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all duration-300"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+              </svg>
+            </a>
+            <a
+              href={personalInfo.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="backdrop-blur-md bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all duration-300"
+            >
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+            </a>
+            <a
+              href={`mailto:${personalInfo.email}`}
+              className="backdrop-blur-md bg-white/10 p-3 rounded-full hover:bg-white/20 transition-all duration-300"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
   );
-};
+}
 
 export default Hero;

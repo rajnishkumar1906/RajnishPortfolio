@@ -8,39 +8,40 @@ import Contact from "./components/Contact";
 
 function App() {
   return (
-    <div className="min-h-screen bg-white text-black dark:bg-[#0a0a0a] dark:text-gray-100">
-
+    <div className="min-h-screen text-white">
       <Navbar />
 
       <main className="pt-16">
+        {/* Glassmorphism separator */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <Hero />
 
-        {/* Separator */}
-        <div className="border-t border-gray-200 dark:border-gray-800 w-full" />
+        {/* Glassmorphism separator */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <About />
 
-        {/* Separator */}
-        <div className="border-t border-gray-200 dark:border-gray-800 w-full" />
+        {/* Glassmorphism separator */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <Skills />
 
-        {/* Separator */}
-        <div className="border-t border-gray-200 dark:border-gray-800 w-full" />
+        {/* Glassmorphism separator */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <Projects />
 
-        {/* Separator */}
-        <div className="border-t border-gray-200 dark:border-gray-800 w-full" />
+        {/* Glassmorphism separator */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
 
         <Contact />
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-[#0b0b0b] py-8">
+      {/* Footer with glassmorphism */}
+      <footer className="backdrop-blur-md bg-white/5 border-t border-white/10 py-8 mt-12">
         <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-600 dark:text-gray-400 text-sm tracking-wide">
+          <p className="text-white/70 text-sm tracking-wide">
             © 2025 Rajnish Kumar — All rights reserved.
           </p>
         </div>
