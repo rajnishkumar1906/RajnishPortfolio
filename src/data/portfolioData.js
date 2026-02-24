@@ -109,29 +109,38 @@ export const projects = [
     year: "2026"
   },
 
-  // PROJECT 2: BookBuddy
-  {
-    id: 2,
-    title: "BookBuddy - AI-Powered Virtual Librarian",
-    description: "An explainable AI book discovery platform using RAG architecture. Provides semantic search, personalized recommendations, and AI-generated book summaries with clear reasoning.",
-    longDescription: "BookBuddy is a full-stack AI-powered book discovery platform that uses semantic search and Retrieval-Augmented Generation (RAG) to provide intelligent, explainable book recommendations. Unlike traditional keyword-based systems, BookBuddy understands user intent using embeddings and contextual reasoning. Features include semantic search using SentenceTransformers, RAG-based explainable recommendations, OCR for book cover text extraction, and personalized user preferences tracking.",
-    technologies: ["FastAPI", "React", "PostgreSQL", "SentenceTransformers", "ChromaDB", "RAG", "Google Gemini", "Tesseract OCR", "JWT", "OAuth 2.0", "Tailwind CSS"],
-    features: [
-      "🧠 Semantic search using embeddings",
-      "🤖 RAG-based explainable recommendations",
-      "📝 AI-generated book summaries (50+ words)",
-      "🖼️ OCR for book cover text extraction",
-      "👤 Personalized user preferences",
-      "🔐 JWT + OAuth 2.0 authentication",
-      "🏠 Privacy-focused local embeddings"
-    ],
-    github: "https://github.com/rajnishkumar1906/BookBuddy",
-    demo: "#",
-    image: "/bookbuddy.png",
-    category: "AI/ML",
-    year: "2026"
-  },
-
+  // PROJECT 2: LitScholar
+{
+  id: 2,
+  title: "LitScholar – AI-Powered Virtual Librarian",
+  description: "An AI-powered virtual librarian that uses semantic search and Retrieval-Augmented Generation (RAG) to deliver explainable, citation-backed book recommendations.",
+  longDescription: "LitScholar is a full-stack AI-powered virtual librarian that understands natural language queries and provides intelligent, explainable book recommendations using semantic search and Retrieval-Augmented Generation (RAG). The system leverages SentenceTransformers and ChromaDB for high-precision vector retrieval, integrates Google Gemini for contextual reasoning, and supports secure user authentication with JWT and Google OAuth. It also includes a structured data pipeline for cleaning book datasets, generating embeddings, and delivering citation-backed responses.",
+  technologies: [
+    "FastAPI",
+    "React",
+    "PostgreSQL",
+    "SentenceTransformers",
+    "ChromaDB",
+    "RAG",
+    "Google Gemini",
+    "JWT",
+    "OAuth 2.0",
+    "Tailwind CSS"
+  ],
+  features: [
+    "🧠 Semantic search using vector embeddings",
+    "🤖 RAG-based explainable recommendations with citations",
+    "📝 AI-powered librarian-style responses",
+    "👤 Secure authentication with JWT and Google OAuth",
+    "📊 Structured data pipeline for embeddings and retrieval",
+    "🏠 Privacy-aware architecture with local vector storage"
+  ],
+  github: "https://github.com/rajnishkumar1906/litscholar",
+  demo: "#",
+  image: "/litscholar.png",
+  category: "AI/ML",
+  year: "2026"
+},
   // PROJECT 3: Agentic Marketing Intelligence System
   {
     id: 3,
