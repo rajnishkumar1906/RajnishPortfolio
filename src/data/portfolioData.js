@@ -10,7 +10,7 @@ export const personalInfo = {
   email: "rajnishk71249@gmail.com",
   github: "https://github.com/rajnishkumar1906",
   linkedin: "https://www.linkedin.com/in/rajnishkumar1906/",
-  resume: "/resume/Rajnish_Kumar_Resume.pdf",
+  resume: "/SDE_Resume.pdf",
   avatar: "https://github.com/rajnishkumar1906.png"
 };
 
@@ -86,9 +86,40 @@ export const skills = [
 ];
 
 export const projects = [
-  // PROJECT 1: Connectly (Most Recent)
   {
-    id: 1,
+  id: 1,
+  title: "Finlyze — AI Multi-Agent Stock Research Platform",
+  description:
+    "A multi-agent AI system for collaborative stock research, automating data collection, analysis, and report generation.",
+  longDescription:
+    "Finlyze is a production-grade AI-powered stock research platform built using LangGraph and a multi-agent architecture. It orchestrates specialized agents (Researcher, Analyst, Writer) to collect real-time market data, analyze technical indicators, process financial news sentiment, and generate structured investment reports. Designed primarily for research teams, Finlyze reduces end-to-end stock analysis time by 60% while remaining useful for individual investors.",
+  technologies: [
+    "Python",
+    "LangGraph",
+    "Gemini AI",
+    "FastAPI",
+    "Streamlit",
+    "yfinance",
+    "Multi-Agent Systems",
+    "Data Analysis"
+  ],
+  features: [
+    "🤖 Multi-agent architecture (Researcher, Analyst, Writer)",
+    "📈 Automated technical indicator analysis",
+    "📰 Financial news sentiment analysis",
+    "📄 Structured report generation (PDF, TXT, MD)",
+    "⚡ 60% faster stock analysis workflow"
+  ],
+  github: "https://github.com/rajnishkumar1906/Finlyze",
+  demo: "https://finlyze.onrender.com",
+  image: "/finlyze.png",
+  category: "AI/ML",
+  year: "2026"
+},
+  
+  // PROJECT 2: Connectly (Most Recent)
+  {
+    id: 2,
     title: "Connectly - Full-Stack Social Media Platform",
     description: "A production-ready full-stack social media platform with user authentication, posts, follows, real-time chat, and personalized feeds. Features scalable MERN stack architecture with hybrid REST + WebSocket communication.",
     longDescription: "Connectly is a modern full-stack social media platform built with the MERN stack. It allows users to connect, share posts, follow others, and communicate via real-time chat. This project demonstrates scalable backend architecture, clean frontend state management, and hybrid REST + WebSocket communication — perfect for portfolio showcase. Features include secure JWT authentication with HTTP-only cookies, real-time one-to-one chat using Socket.IO, Cloudinary-based image uploads, and a fully responsive Tailwind CSS design.",
@@ -109,9 +140,9 @@ export const projects = [
     year: "2026"
   },
 
-  // PROJECT 2: LitScholar
+  // PROJECT 3: LitScholar
 {
-  id: 2,
+  id: 3,
   title: "LitScholar – AI-Powered Virtual Librarian",
   description: "An AI-powered virtual librarian that uses semantic search and Retrieval-Augmented Generation (RAG) to deliver explainable, citation-backed book recommendations.",
   longDescription: "LitScholar is a full-stack AI-powered virtual librarian that understands natural language queries and provides intelligent, explainable book recommendations using semantic search and Retrieval-Augmented Generation (RAG). The system leverages SentenceTransformers and ChromaDB for high-precision vector retrieval, integrates Google Gemini for contextual reasoning, and supports secure user authentication with JWT and Google OAuth. It also includes a structured data pipeline for cleaning book datasets, generating embeddings, and delivering citation-backed responses.",
@@ -141,9 +172,9 @@ export const projects = [
   category: "AI/ML",
   year: "2026"
 },
-  // PROJECT 3: Agentic Marketing Intelligence System
+  // PROJECT 4: Agentic Marketing Intelligence System
   {
-    id: 3,
+    id: 4,
     title: "Agentic Marketing Intelligence System",
     description: "An autonomous multi-agent AI pipeline that analyzes 4,500+ Facebook ad performance records, diagnoses ROAS fluctuations, and generates creative recommendations.",
     longDescription: "An Agentic AI system built for comprehensive Facebook Ads analysis. It autonomously analyzes ad performance, diagnoses ROAS fluctuations, validates hypotheses using quantitative signals (CTR, ROAS, CPC metrics), and generates new creative recommendations grounded in real ad messaging. Features a multi-agent architecture (Planner → Data → Insight → Evaluator → Creative) with structured prompting and JSON schema validation.",
@@ -164,9 +195,9 @@ export const projects = [
     year: "2025"
   },
 
-  // PROJECT 4: Computer Vision Image Search
+  // PROJECT 5: Computer Vision Image Search
   {
-    id: 4,
+    id: 5,
     title: "Computer Vision Image Search",
     description: "A computer-vision powered image search engine using YOLO + Streamlit that allows users to search visually similar images based on object detection embeddings.",
     longDescription: "Engineered a computer vision pipeline using YOLOv11 for semantic image retrieval without metadata dependency. Architectured a metadata-driven indexing system supporting logical queries and object-count filtering. Developed an interactive Streamlit interface for batch inference, visualization, and cached performance.",
@@ -184,7 +215,7 @@ export const projects = [
     year: "2025"
   },
 
-  // PROJECT 5: PPE Detection — Hybrid YOLOv8 + ViT
+  // PROJECT 6: PPE Detection — Hybrid YOLOv8 + ViT
   {
     id: 5,
     title: "PPE Detection — Hybrid YOLOv8 + ViT",
@@ -204,7 +235,7 @@ export const projects = [
     year: "2025"
   },
 
-  // PROJECT 6: HospiTex — Hospital Management System
+  // PROJECT 7: HospiTex — Hospital Management System
   {
     id: 6,
     title: "HospiTex — Hospital Management System",
@@ -224,7 +255,7 @@ export const projects = [
     year: "2025"
   },
 
-  // PROJECT 7: DocuBot — AI Knowledge Assistant
+  // PROJECT 8: DocuBot — AI Knowledge Assistant
   {
     id: 7,
     title: "DocuBot — AI Knowledge Assistant",
@@ -244,7 +275,7 @@ export const projects = [
     year: "2025"
   },
 
-  // PROJECT 8: GaonShield — Rural Health Monitoring
+  // PROJECT 9: GaonShield — Rural Health Monitoring
   {
     id: 8,
     title: "GaonShield — Rural Health Monitoring",
@@ -264,7 +295,7 @@ export const projects = [
     year: "2024"
   },
 
-  // PROJECT 9: MoodLens — Sentiment Analysis App
+  // PROJECT 10: MoodLens — Sentiment Analysis App
   {
     id: 9,
     title: "MoodLens — Sentiment Analysis App",
@@ -284,7 +315,7 @@ export const projects = [
     year: "2024"
   },
 
-  // PROJECT 10: MNIST Digit Classifier
+  // PROJECT 11: MNIST Digit Classifier
   {
     id: 10,
     title: "MNIST Digit Classifier",
@@ -304,7 +335,7 @@ export const projects = [
     year: "2024"
   },
 
-  // PROJECT 11: Financial Fraud Detection
+  // PROJECT 12: Financial Fraud Detection
   {
     id: 11,
     title: "Financial Fraud Detection",
@@ -324,7 +355,7 @@ export const projects = [
     year: "2024"
   },
 
-  // PROJECT 12: MERN Auth — Secure Authentication System
+  // PROJECT 13: MERN Auth — Secure Authentication System
   {
     id: 12,
     title: "MERN Auth — Secure Authentication System",
