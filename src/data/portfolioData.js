@@ -112,7 +112,7 @@ export const projects = [
   ],
   github: "https://github.com/rajnishkumar1906/Finlyze",
   demo: "https://finlyze.onrender.com",
-  image: "/finlyze.png",
+  image: "/Screenshot 2026-02-27 233500.png",
   category: "AI/ML",
   year: "2026"
 },
