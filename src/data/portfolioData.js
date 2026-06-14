@@ -1,161 +1,175 @@
-// portfolioData.js - Updated with correct sequential IDs
+// portfolioData.js - Updated with all projects, including FutureHr and AgroVision, and structured skills.
 
 export const personalInfo = {
   name: "Rajnish Kumar",
-  title: "AI Full Stack Engineer | MERN & LLM Systems",
+  title: "Software Engineer | Full Stack with AI",
   tagline:
-    "Building production-ready AI applications and scalable full-stack systems that solve real-world problems.",
+    "Building robust software architectures, high-performance Full Stack systems, and production-ready Generative AI integrations.",
   about:
-    "AI Full Stack Engineer with 3 production applications combining full-stack development and AI/ML. Built Finlyze, a LangGraph multi-agent system that reduced stock analysis time by 70%, and LitScholar, an AI librarian serving 10k+ monthly users with 750ms semantic search across 16K+ books. Experienced in React, Node.js, FastAPI, LangChain, ChromaDB, and Redis. Strong foundation in Python, REST APIs, WebSockets, database optimization, and modern AI workflows including RAG and multi-agent systems. Solved 500+ DSA problems with 5-Star Python rating on HackerRank.",
+    "Software Engineer specializing in Full Stack architectures and Generative AI systems. Built Finlyze, a LangGraph multi-agent stock research system that accelerated insights by 70%, LitScholar, an AI librarian with 750ms semantic search across 16K+ books for 10k+ monthly users, and AgroVision, a multilingual agricultural platform with a voice-activated RAG chatbot and disease detection. Proficient in React, Node.js, FastAPI, LangChain, LangGraph, and FAISS. Strong foundation in Python, REST APIs, WebSockets, database optimization, and modern AI workflows (RAG, multi-agent orchestrations). Solved 500+ DSA problems with a 5-Star rating on HackerRank.",
   email: "rajnishk71249@gmail.com",
+  phone: "+91 8955694170",
   github: "https://github.com/rajnishkumar1906",
   linkedin: "https://www.linkedin.com/in/rajnishkumar1906/",
   resume: "/SDE_Resume.pdf",
   avatar: "https://github.com/rajnishkumar1906.png"
 };
 
+// Flat list for legacy support, if any component uses it
 export const skills = [
-  // Programming Languages
-  "Python",
-  "JavaScript",
-  "TypeScript",
-  "C++",
-  "Java",
-  
-  // Frontend
-  "React",
-  "Next.js",
-  "Tailwind CSS",
-  "HTML5/CSS3",
-  "Vite",
-  
-  // Backend & APIs
-  "Node.js",
-  "Express.js",
-  "FastAPI",
-  "Flask",
-  "REST APIs",
-  "WebSockets",
-  "Socket.IO",
-  
-  // Databases & Caching
-  "MongoDB",
-  "PostgreSQL",
-  "MySQL",
-  "Redis",
-  "ChromaDB",
-  "Firebase",
-  
-  // AI / LLM
-  "LangChain",
-  "LangGraph",
-  "RAG (Retrieval-Augmented Generation)",
-  "Multi-Agent Systems",
-  "LLMs (Gemini, OpenAI)",
-  "SentenceTransformers",
-  "Embeddings",
-  "Prompt Engineering",
-  
-  // Machine Learning
-  "Machine Learning",
-  "Deep Learning",
-  "NLP",
-  "PyTorch",
-  "TensorFlow",
-  "Scikit-Learn",
-  "NumPy",
-  "Pandas",
-  "OpenCV",
-  
-  // DevOps & Tools
-  "Docker",
-  "Git & GitHub",
-  "CI/CD",
-  "AWS (EC2, S3)",
-  "Vercel",
-  "Render",
-  
-  // Core CS
-  "Data Structures & Algorithms",
-  "System Design",
-  "DBMS",
-  "Operating Systems",
-  "Computer Networks"
+  "Python", "C++", "JavaScript", "TypeScript",
+  "React", "Next.js", "Tailwind CSS", "HTML5/CSS3", "Vite",
+  "Node.js", "Express.js", "FastAPI", "Flask", "REST APIs", "WebSockets", "Socket.IO",
+  "MongoDB", "PostgreSQL", "MySQL", "Redis", "ChromaDB", "Firebase",
+  "LangChain", "LangGraph", "RAG", "Multi-Agent Systems", "Gemini AI", "Whisper", "Hugging Face", "Sentence Transformers", "FAISS",
+  "Machine Learning", "Deep Learning", "NLP", "PyTorch", "TensorFlow", "Scikit-Learn", "OpenCV", "YOLO Computer Vision",
+  "Docker", "JWT", "PASETO", "RazorPay", "SMTP", "Git & GitHub", "Vercel", "Render"
 ];
+
+// Grouped skills matching the resume sections
+export const skillsGrouped = {
+  "Languages": ["Python", "C++", "JavaScript", "TypeScript"],
+  "AI & LLM": ["GenAI", "LangChain", "LangGraph", "RAG", "FAISS", "Gemini AI", "Whisper", "Hugging Face", "Sentence Transformers"],
+  "ML & CV": ["NumPy", "Pandas", "PyTorch", "TensorFlow", "Scikit-Learn", "OpenCV", "YOLO Computer Vision"],
+  "Backend": ["FastAPI", "Node.js", "Express.js", "REST APIs"],
+  "Frontend": ["React", "Tailwind CSS", "Next.js", "Vite"],
+  "Databases": ["PostgreSQL", "MongoDB", "Redis", "ChromaDB", "FAISS"],
+  "DevOps & Tools": ["Docker", "JWT", "PASETO", "RazorPay", "SMTP", "Git & GitHub"]
+};
 
 export const projects = [
   {
     id: 1,
+    title: "FutureHR — AI-Powered HR Management System",
+    description:
+      "A complete, production-ready HR platform combining employee management with an end-to-end AI recruitment pipeline and voice screening.",
+    longDescription:
+      "FutureHR is a next-generation multi-tenant HRMS and AI recruitment pipeline built on a microservices architecture. It orchestrates a React frontend and four FastAPI backend services (Auth, HRMS, AI Recruitment, and API Gateway) with role-based routing and HTTP-only JWT auth. The recruitment pipeline screens resumes using Gemini AI to score match and identify skill gaps, generates candidate-specific voice questions from their CV, hosts an in-browser voice interview with Web Speech API live speech-to-text transcript, and generates comprehensive strengths/weaknesses evaluations. Upon hiring, it triggers background tasks for credentials generation and automated email notices.",
+    technologies: [
+      "React",
+      "FastAPI",
+      "Google Gemini",
+      "Web Speech API",
+      "PostgreSQL",
+      "NeonDB",
+      "Tailwind CSS",
+      "JWT",
+      "Microservices"
+    ],
+    features: [
+      "🤖 AI Resume Screening (Gemini extracts skills, scores match 0-100, flags gaps)",
+      "🎙️ Per-Candidate Voice Interviews (uniquely generated questions + live speech-to-text)",
+      "📧 Non-blocking Background Emails (welcome alerts, credentials, voice invites)",
+      "🔐 Multi-Role Access Control (Management Admin, HR Recruiter, Senior Manager, Employee, Candidate)",
+      "📊 Core HRMS (Employee records, attendance tracking, auto-generated payroll, KPI goals)",
+      "💬 Recruiter AI Chatbot (Query candidate profiles and evaluations in real-time)"
+    ],
+    github: "https://github.com/rajnishkumar1906/FutureHr",
+    demo: "https://future-hr.vercel.app",
+    category: "Full Stack",
+    year: "2026"
+  },
+  {
+    id: 2,
     title: "Finlyze — AI Multi-Agent Stock Research Platform",
     description:
-      "A multi-agent AI system orchestrating 12+ specialized agents for collaborative stock research, automating data collection, analysis, and report generation.",
+      "A multi-agent AI system orchestrating specialized agents for collaborative stock research, technical analysis, and sentiment parsing.",
     longDescription:
-      "Finlyze is a production-grade AI-powered stock research platform built using LangGraph and multi-agent architecture. It orchestrates specialized agents (Researcher, Analyst, Writer) to collect real-time market data, analyze technical indicators, process financial news sentiment, and generate structured investment reports. The system aggregates 50+ technical indicators and scrapes 150+ daily market reports for Gemini-powered NLP sentiment analysis. Built with asynchronous concurrency to cut data retrieval latency by 55%, achieving consistent sub-2s reporting speeds. Finlyze reduces end-to-end stock analysis time by 70% while remaining useful for both research teams and individual investors.",
+      "Finlyze is a production-grade AI stock research platform powered by LangGraph. It orchestrates a specialized agent ecosystem (Researcher, Analyst, and Writer) to quantify technical indicators and aggregate sentiment. Features a yfinance and DuckDuckGo data pipeline collecting 50+ technical indicators and 150+ daily news reports for Gemini-driven NLP sentiment analysis. Utilizes asynchronous concurrency to cut data retrieval latency by 55% and implements fpdf2 on a Streamlit analytics hub for sub-2s automated PDF report downloads. Finlyze accelerates insights discovery by 70% for retail and professional investment workflows.",
     technologies: [
       "Python",
       "LangGraph",
       "Gemini AI",
       "FastAPI",
       "Streamlit",
-      "Multi-Agent Systems",
       "yfinance",
       "NLP",
-      "Async Python"
+      "Async Python",
+      "fpdf2"
     ],
     features: [
-      "🤖 12+ autonomous agents (Researcher, Analyst, Writer, Sentiment)",
-      "📈 50+ technical indicators automated analysis",
-      "📰 150+ daily market reports scraped for sentiment",
-      "📄 Structured report generation (PDF, TXT, MD)",
-      "⚡ 70% faster stock analysis workflow",
-      "⏱️ Sub-2s reporting with async concurrency"
+      "🤖 LangGraph Agent Coordination (Specialized Researcher, Analyst, and Writer agents)",
+      "📈 50+ Technical Indicators (Automated quantitative evaluation and charts)",
+      "📰 150+ Daily News Reports Scraped (Gemini NLP sentiment trend modeling)",
+      "⚡ High-Volume Async Pipeline (Cuts data fetching latency by 55%, sub-2s page loads)",
+      "📄 On-the-fly PDF Generation (Streamlit analytics hub with fpdf2 exports)"
     ],
     github: "https://github.com/rajnishkumar1906/Finlyze",
     demo: "https://finlyze.onrender.com",
-    image: "/finlyze.png",
     category: "AI/ML",
     year: "2026"
   },
-  
   {
-    id: 2,
+    id: 3,
     title: "LitScholar — AI-Powered Virtual Librarian",
-    description: "An AI-powered virtual librarian enabling natural language book discovery, follow-up conversations, and personalized recommendations using semantic search across 16,000+ books.",
-    longDescription: "LitScholar is a full-stack AI-powered virtual librarian that understands natural language queries and provides intelligent, explainable book recommendations using semantic search and Retrieval-Augmented Generation (RAG). The system leverages SentenceTransformers and ChromaDB for high-precision vector retrieval achieving 750ms latency, integrates Google Gemini for contextual reasoning, and supports secure user authentication with JWT and Google OAuth. Features a personalized recommendation system using collaborative filtering and genre-based similarity. Built with FastAPI backend with PostgreSQL connection pooling (50+ concurrent users), Redis caching reducing database queries by 70%, and a React frontend serving 10k+ monthly users.",
+    description:
+      "An AI-powered virtual librarian enabling natural language book queries, follow-up chats, and collaborative filtering recommendations.",
+    longDescription:
+      "LitScholar is a full-stack AI virtual librarian serving 10k+ monthly users with semantic search across 16K+ books. Built on a microservices architecture with a React frontend, the backend features a FastAPI system with PostgreSQL connection pooling, Redis caching (slashing database queries by 70%), and ChromaDB vector retrieval. Employs SentenceTransformers and FAISS for 750ms retrieval latency with 92% citation accuracy, and integrates Google Gemini for contextual reasoning. Incorporates collaborative filtering and genre similarity models for a 95% accurate recommendation engine, secured by Google OAuth and Razorpay subscriptions.",
     technologies: [
       "FastAPI",
       "React",
       "PostgreSQL",
       "Redis",
-      "SentenceTransformers",
       "ChromaDB",
+      "FAISS",
+      "SentenceTransformers",
       "RAG",
       "Google Gemini",
-      "JWT",
-      "OAuth 2.0",
-      "Tailwind CSS"
+      "RazorPay",
+      "Google OAuth"
     ],
     features: [
-      "🧠 Natural language book discovery",
-      "💬 Follow-up conversation capability",
-      "🎯 Personalized recommendations (collaborative filtering)",
-      "🔍 Semantic search across 16K+ books",
-      "⚡ 750ms retrieval latency",
-      "📊 10k+ monthly users",
-      "💾 70% DB query reduction via Redis"
+      "🔍 Semantic search across 16K+ books with 750ms retrieval latency",
+      "💬 Multi-turn conversational follow-ups and bibliography citations (92% accuracy)",
+      "🎯 Hybrid Recommendation Engine (Collaborative filtering + genre-based cosine similarity)",
+      "💾 Database Optimization (Neon PostgreSQL connection pooling + Redis cache query reduction)",
+      "💳 Commercial integrations (Razorpay subscriptions & Google OAuth credentials)"
     ],
     github: "https://github.com/rajnishkumar1906/litscholar",
     demo: "https://lit-scholar.vercel.app",
-    image: "/litscholar.png",
     category: "AI/ML",
     year: "2026"
   },
-  
   {
-    id: 3,
+    id: 4,
+    title: "AgroVision — AI Agricultural Platform",
+    description:
+      "A microservices agriculture platform combining ML crop planning, leaf disease detection, and multilingual KrishiBot voice assistant.",
+    longDescription:
+      "AgroVision is an AI-powered portal for farmers and agricultural advisors. It features three core services: a scikit-learn crop recommender, a leaf disease classifier using EfficientNetB0 transfer learning, and KrishiBot (a RAG chatbot powered by Gemini, FAISS, OpenAI Whisper, and gTTS). Deployed via Docker Compose, it routes all client calls through an Express.js API Gateway logging audit trails to MongoDB. Supports full Hindi, Punjabi, and English localized UI. The EfficientNetB0 model achieves 97.1% accuracy on a 38-class plant disease dataset, translating outputs to vernacular names to assist low-literacy users.",
+    technologies: [
+      "React",
+      "Node.js",
+      "Express",
+      "FastAPI",
+      "TensorFlow",
+      "EfficientNetB0",
+      "LangChain",
+      "FAISS",
+      "OpenAI Whisper",
+      "PASETO",
+      "MongoDB"
+    ],
+    features: [
+      "🌾 Crop Recommendation (Inputs: N, P, K, pH, rainfall, temp, humidity, or automatic GPS weather)",
+      "🍂 38-Class Leaf Disease Detector (EfficientNetB0 ImageNet model with 97.1% post-fine-tuning accuracy)",
+      "🎙️ KrishiBot Text & Voice (FAISS RAG over agriculture guides with Whisper STT & gTTS speech output)",
+      "🌐 Multilingual UI (Fully localized frontend pages and voice services in Hindi, Punjabi, and English)",
+      "🔐 PASETO-Secured API Gateway (Single entry proxy, audit logging on MongoDB, and Redis caching)"
+    ],
+    github: "https://github.com/rajnishkumar1906/Agrovision",
+    demo: "#",
+    category: "AI/ML",
+    year: "2025-2026"
+  },
+  {
+    id: 5,
     title: "Nexora — Real-Time Community Platform",
-    description: "A scalable real-time community platform with text, voice, and video interactions supporting 100+ concurrent users with sub-100ms message delivery.",
-    longDescription: "Nexora is a modular MERN ecosystem with 12+ decoupled backend services facilitating high-availability community interactions and multiplayer gaming. Orchestrated bidirectional data streams via Socket.IO maintaining sub-100ms message delivery while supporting 100+ concurrent real-time events per channel. Integrated WebRTC for peer-to-peer voice/video calls directly in the browser. Fortified security using JWT and HTTP-only cookie persistence, while slashing response payload sizes by 40% via Gzip compression. Deployed on Vercel with responsive Tailwind CSS frontend.",
+    description:
+      "A scalable MERN stack community hub with voice, video, and text chat, featuring WebRTC and Socket.IO integrations.",
+    longDescription:
+      "Nexora is a high-availability community platform constructed on a decoupled microservices architecture with 12+ Node.js backends. Integrates Socket.IO for real-time messaging, maintaining sub-100ms message propagation speeds under loads of 100+ concurrent events per channel. Employs WebRTC to coordinate peer-to-peer browser video/audio streaming directly. Security is hardened using JWT in HTTP-only cookies, and response payloads are optimized by 40% utilizing Gzip compression middlewares.",
     technologies: [
       "React",
       "Node.js",
@@ -164,242 +178,235 @@ export const projects = [
       "Socket.IO",
       "WebRTC",
       "JWT",
-      "Tailwind CSS",
-      "Vercel"
+      "Tailwind CSS"
     ],
     features: [
-      "💬 Real-time messaging (sub-100ms latency)",
-      "📹 Peer-to-peer voice/video calls",
-      "👥 100+ concurrent users per channel",
-      "🎮 Multiplayer gaming support",
-      "🔐 JWT with HTTP-only cookies",
-      "📦 40% payload reduction via Gzip",
-      "⚡ 12+ decoupled backend services"
+      "💬 Real-time text channels with sub-100ms Socket.IO synchronization",
+      "📹 P2P voice and video rooms powered by WebRTC protocols",
+      "🛡️ HTTP-only cookie-based JWT authorization guards",
+      "📦 Node.js gateway routing and 40% payload optimization using Gzip",
+      "🎮 In-app modular components ready for multiplayer integrations"
     ],
     github: "https://github.com/rajnishkumar1906/Nexora",
     demo: "https://nexora-teal.vercel.app",
-    image: "/nexora.png",
     category: "Full Stack",
     year: "2025-2026"
   },
-
   {
-    id: 4,
+    id: 6,
     title: "Agentic Marketing Intelligence System",
-    description: "An autonomous multi-agent AI pipeline that analyzes 4,500+ Facebook ad performance records, diagnoses ROAS fluctuations, and generates creative recommendations.",
-    longDescription: "An Agentic AI system built for comprehensive Facebook Ads analysis. It autonomously analyzes ad performance, diagnoses ROAS fluctuations, validates hypotheses using quantitative signals (CTR, ROAS, CPC metrics), and generates new creative recommendations grounded in real ad messaging. Features a multi-agent architecture (Planner → Data → Insight → Evaluator → Creative) with structured prompting and JSON schema validation.",
-    technologies: ["Python", "LangChain", "Multi-Agent Architecture", "LLMs", "Pandas", "FastAPI", "JSON Schema", "Pytest"],
+    description:
+      "An autonomous 5-agent marketing pipeline analyzing Facebook ad data to diagnose performance fluctuations and formulate strategies.",
+    longDescription:
+      "Built an autonomous Agentic AI system for digital advertising intelligence. Features a 5-agent pipeline (Planner, Data, Insight, Evaluator, and Creative) powered by LangChain. It ingests 4,500+ Facebook ad performance records, diagnoses ROAS fluctuations, validates hypotheses with statistical metrics (CTR, CPC, Conversion Rates), and generates data-driven creative recommendations grounded in historic winners. Outfitted with JSON Schema validations for zero-shot structured tool outputs.",
+    technologies: [
+      "Python",
+      "LangChain",
+      "FastAPI",
+      "Pandas",
+      "JSON Schema",
+      "Pytest",
+      "Multi-Agent"
+    ],
     features: [
-      "🧠 5-agent architecture (Planner → Data → Insight → Evaluator → Creative)",
-      "📊 Quantitative validation with CTR/ROAS/CPC metrics",
-      "🔍 Autonomous ROAS fluctuation diagnosis",
-      "💡 Data-driven creative generation",
-      "🔬 Hypothesis validation with confidence scores"
+      "🧠 5-Agent Pipeline (Coordinated data inspection, testing, and creative suggestions)",
+      "📊 ROAS Fluctuation Diagnosis (Finds hidden variables and shifts in audience groups)",
+      "🔍 Structured Outputs (JSON Schema verification ensures 100% stable parser rates)",
+      "💡 Creative Recommendation Engine (Drafts ad copies validated by history performance)"
     ],
     github: "https://github.com/rajnishkumar1906/agentic-fb-analyst",
     demo: "#",
-    image: "/agentic-fb.jpg",
     category: "AI/ML",
     year: "2025"
   },
-
   {
-    id: 5,
+    id: 7,
     title: "Computer Vision Image Search",
-    description: "A computer-vision powered image search engine using YOLO + Streamlit that allows users to search visually similar images based on object detection embeddings.",
-    longDescription: "Engineered a computer vision pipeline using YOLOv11 for semantic image retrieval without metadata dependency. Architectured a metadata-driven indexing system supporting logical queries and object-count filtering. Developed an interactive Streamlit interface for batch inference, visualization, and cached performance.",
-    technologies: ["YOLOv11", "Computer Vision", "Streamlit", "Python", "OpenCV", "NumPy"],
+    description:
+      "A semantic image search engine using YOLOv11 and Streamlit for metadata-free retrieval and object filtering.",
+    longDescription:
+      "Developed a computer vision search system using YOLOv11 to index image directories without standard metadata tags. Extracts visual object coordinates and counts, storing them in a searchable database. Built a Streamlit interface allowing users to locate images using natural language queries, object counts (e.g. '3 cars'), and visual similarities with cached vector lookups.",
+    technologies: ["Python", "YOLOv11", "Streamlit", "OpenCV", "NumPy", "Computer Vision"],
     features: [
-      "🔍 Semantic image retrieval without metadata",
-      "📊 Metadata-driven indexing system",
-      "🖼️ Batch inference and visualization",
-      "⚡ Cached performance optimization"
+      "🔍 Metadata-free semantic search using YOLO object embeddings",
+      "📊 Filter queries based on object counts and class detections",
+      "⚡ High-speed batch image indexing with local feature cache",
+      "🖼️ Interactive Streamlit browser for visual matches and scores"
     ],
     github: "https://github.com/rajnishkumar1906/computer-vision-image-search",
     demo: "#",
-    image: "/image-search-app.png",
     category: "Computer Vision",
     year: "2025"
   },
-
   {
-    id: 6,
+    id: 8,
     title: "PPE Detection — Hybrid YOLOv8 + ViT",
-    description: "An intelligent PPE safety monitoring system using hybrid YOLOv8 and Vision Transformer to detect helmets, jackets, and safety gear in workplace environments.",
-    longDescription: "Built an intelligent PPE safety monitoring system using hybrid YOLOv8 and Vision Transformer architecture for accurate detection of safety equipment in workplace environments. Combines the speed of YOLO with the attention mechanisms of Vision Transformers for improved accuracy in real-time monitoring scenarios.",
-    technologies: ["YOLOv8", "Vision Transformer", "Deep Learning", "OpenCV", "PyTorch", "Computer Vision"],
+    description:
+      "An automated workplace safety monitor combining YOLOv8 bounding boxes with Vision Transformers for PPE classification.",
+    longDescription:
+      "Engineered an automated personal protective equipment safety monitor to detect helmets, safety jackets, and goggles in industrial workspaces. Combines a real-time YOLOv8 detector with a Vision Transformer (ViT) classifier to resolve overlapping instances. The hybrid attention network achieves high precision on safety violations under complex industrial lighting.",
+    technologies: ["PyTorch", "YOLOv8", "Vision Transformer", "OpenCV", "Computer Vision"],
     features: [
-      "🪖 Helmet detection",
-      "🧥 Safety jacket detection",
-      "⚙️ Real-time monitoring",
-      "🎯 Hybrid architecture for improved accuracy"
+      "🪖 Real-time detection of helmets, vests, and safety goggles",
+      "👁️ Vision Transformer attention layers to categorize crowded objects",
+      "⚠️ Instant warning notifications on safety gear violations",
+      "📈 Custom PyTorch train cycle for specialized industrial safety datasets"
     ],
     github: "https://github.com/rajnishkumar1906/PPE-Detection-Hybrid_YOLOv8_ViT",
     demo: "#",
-    image: "/ppe-detection.png",
     category: "Computer Vision",
     year: "2025"
   },
-
   {
-    id: 7,
+    id: 9,
     title: "HospiTex — Hospital Management System",
-    description: "A full-stack hospital platform with role-based access for Admins, Doctors, Patients & Diagnostics. Includes AI Medibot using Gemini + RAG architecture.",
-    longDescription: "A comprehensive hospital management system with role-based access control for different user types. Features an AI-powered medical chatbot using Gemini API and RAG architecture for intelligent patient queries. Includes patient record management, appointment scheduling, and diagnostic report storage.",
-    technologies: ["MERN", "JWT", "MongoDB", "Gemini AI", "RAG", "Express", "React", "Node.js", "Tailwind CSS"],
+    description:
+      "A clinical management portal with role-based access controls and a Gemini-powered medical RAG bot.",
+    longDescription:
+      "Built a clinic management portal using the MERN stack. Implements separate user flows and dashboards for Admin, Doctors, Patients, and Diagnostics. Integrates an AI MediBot utilizing Google Gemini and a local vector search over clinical guidelines to answer general patient questions safely. Supports appointment schedules and medical record uploads.",
+    technologies: ["MongoDB", "Express", "React", "Node.js", "Gemini AI", "RAG", "JWT"],
     features: [
-      "👥 Role-based access (Admin, Doctor, Patient, Diagnostic)",
-      "🤖 AI Medibot with Gemini + RAG",
-      "🔐 Secure JWT authentication",
-      "📋 Patient record management",
-      "📅 Appointment scheduling"
+      "👥 Role-based interfaces (separate spaces for Doctors, Admins, Patients, Diagnostics)",
+      "🤖 AI Medibot (RAG answering systems over medical sheets)",
+      "📅 Electronic Health Records (EHR uploads & appointment booking calendars)",
+      "🔐 Secure session tokens (JWT in client cookies + middleware guards)"
     ],
     github: "https://github.com/rajnishkumar1906/HospiTex",
     demo: "#",
-    image: "/hospitex.png",
     category: "Full Stack",
     year: "2025"
   },
-
   {
-    id: 8,
+    id: 10,
     title: "DocuBot — AI Knowledge Assistant",
-    description: "An AI-powered document chatbot that extracts insights, answers queries, and performs semantic search across uploaded PDFs and files using RAG architecture.",
-    longDescription: "An intelligent document chatbot leveraging RAG architecture to extract insights and answer queries from uploaded PDFs. Uses SentenceTransformers for embedding generation and ChromaDB for vector storage, enabling semantic search and context-aware responses. Features document chunking strategies for optimal retrieval and citation-backed answers.",
-    technologies: ["Python", "LangChain", "RAG", "SentenceTransformers", "ChromaDB", "Streamlit", "PyPDF2"],
+    description:
+      "A RAG chatbot that indexes uploaded PDFs to answer queries with precise citation logs.",
+    longDescription:
+      "DocuBot is a document chat dashboard built with LangChain and Streamlit. It splits uploaded PDF pages into logical chunks, generates vector embeddings using SentenceTransformers, and stores them in ChromaDB. When queried, it fetches relevant blocks and prompts an LLM to answer, providing page-specific citations to prevent hallucinations.",
+    technologies: ["Python", "LangChain", "ChromaDB", "SentenceTransformers", "Streamlit", "RAG"],
     features: [
-      "📄 PDF document processing and chunking",
-      "🔍 Semantic search across documents",
-      "💬 Context-aware Q&A with citations",
-      "🧠 RAG-based response generation",
-      "📊 Multiple document upload support"
+      "📄 High-performance document parsers supporting complex multi-page PDFs",
+      "🔍 SentenceTransformers embedding with semantic chunk overlays",
+      "💬 Interactive Streamlit chat interface with citation list outputs",
+      "🧠 Pure RAG execution preventing hallucinated model text"
     ],
     github: "https://github.com/rajnishkumar1906/DocuBot",
     demo: "#",
-    image: "/docubot.png",
     category: "AI/ML",
     year: "2025"
   },
-
   {
-    id: 9,
+    id: 11,
     title: "GaonShield — Rural Health Monitoring",
-    description: "A smart community health and water-borne disease early-warning system deployed for rural regions under social innovation initiative.",
-    longDescription: "A community health monitoring system designed for rural areas that provides early warning for water-borne diseases. Integrates IoT sensors with mobile app for real-time health data collection and analysis. Features predictive analytics for disease outbreak forecasting and offline-first architecture for areas with limited connectivity.",
-    technologies: ["IoT", "Kotlin", "Android", "Firebase", "Machine Learning", "Data Visualization", "MPAndroidChart"],
+    description:
+      "A smart community monitoring app with offline-first support to track and warn about water-borne diseases.",
+    longDescription:
+      "GaonShield is a mobile application developed for rural health tracking. Designed with an offline-first architecture (Room database syncing to Firebase when connected), it tracks community health surveys and cross-references sensor inputs to forecast local water-borne disease outbreaks. Developed under a social innovation program.",
+    technologies: ["Kotlin", "Android", "Firebase", "Room DB", "MPAndroidChart", "Machine Learning"],
     features: [
-      "🌡️ Real-time health monitoring",
-      "💧 Water-borne disease prediction",
-      "📱 Android mobile app with offline support",
-      "🏥 Rural healthcare focus",
-      "📊 Health data visualization"
+      "🌡️ Health logs capturing temperature, water source, and symptoms",
+      "💧 Early warning alert trigger when water parameters decline",
+      "📱 Offline sync architecture supporting remote regions without internet",
+      "📊 Visual dashboards displaying community health metrics"
     ],
     github: "https://github.com/rajnishkumar1906/Gaon-Shield",
     demo: "#",
-    image: "/gaonshield.png",
     category: "Mobile",
     year: "2024"
   },
-
   {
-    id: 10,
+    id: 12,
     title: "MoodLens — Sentiment Analysis App",
-    description: "A Streamlit-powered NLP sentiment analysis tool using transformer models for contextual emotion detection in text with real-time visualization.",
-    longDescription: "A sentiment analysis application that uses transformer-based models (BERT, RoBERTa) to detect emotions and sentiment in text. Features real-time analysis, batch processing, and interactive visualizations of results. Includes support for multiple languages and custom model fine-tuning capabilities.",
-    technologies: ["Python", "Transformers", "Streamlit", "Hugging Face", "PyTorch", "Plotly", "NLP"],
+    description:
+      "A Hugging Face BERT and RoBERTa powered emotion classifier with real-time Streamlit visualization.",
+    longDescription:
+      "Developed an NLP tool using Hugging Face transformers (BERT & RoBERTa) to identify emotions in text blocks. Shows detailed probability meters across positive, negative, and specific emotional classes (joy, anger, sadness). Features batch CSV review, and interactive graphs using Plotly.",
+    technologies: ["Python", "Transformers", "Streamlit", "PyTorch", "Plotly", "NLP"],
     features: [
-      "😊 Multi-class emotion detection",
-      "📊 Interactive sentiment visualization",
-      "⚡ Real-time analysis",
-      "🧠 BERT/RoBERTa transformer models",
-      "🌐 Multi-language support"
+      "😊 Emotion detection mapping text to distinct feelings",
+      "📊 Interactive scoreboards showing positive/negative weights",
+      "⚡ Support for batch text uploads and data analysis reports",
+      "🧠 Fine-tuned transformer models loaded on CPU hosts"
     ],
     github: "https://github.com/rajnishkumar1906/MoodLens",
     demo: "#",
-    image: "/moodlens.png",
     category: "AI/ML",
     year: "2024"
   },
-
   {
-    id: 11,
+    id: 13,
     title: "MNIST Digit Classifier",
-    description: "Feed-forward neural network for handwritten digit recognition built using PyTorch with comprehensive training, evaluation, and visualization utilities.",
-    longDescription: "A deep learning model for handwritten digit recognition using PyTorch. Includes comprehensive training pipeline with configurable hyperparameters, evaluation metrics (accuracy, precision, recall, F1), and visualization tools for model performance analysis. Features multiple architecture variants and experiment tracking.",
-    technologies: ["PyTorch", "Deep Learning", "Python", "Neural Networks", "NumPy", "Matplotlib", "Scikit-learn"],
+    description:
+      "A feed-forward PyTorch neural network classifying digits with configurable hyperparameters and TensorBoard metrics.",
+    longDescription:
+      "Built a handwritten digit recognition neural network from scratch in PyTorch. Includes a training pipeline that supports configurable hyperparameters (learning rate, batch sizes, optimizers), evaluation metrics (precision, recall, F1, accuracy), and visual charts logging loss slopes via TensorBoard.",
+    technologies: ["PyTorch", "Python", "Neural Networks", "Matplotlib", "TensorBoard"],
     features: [
-      "✍️ Handwritten digit recognition (99.2% accuracy)",
-      "📈 Training visualization with TensorBoard",
-      "📊 Comprehensive evaluation metrics",
-      "🔬 Multiple architecture variants",
-      "🧪 Experiment tracking"
+      "✍️ High-accuracy handwritten classifier (99.2% on test datasets)",
+      "📈 Real-time loss charts and weight logs via TensorBoard integration",
+      "🔬 Configurable layers allowing tests of feed-forward and CNN variants",
+      "🧪 Hyperparameter scripts supporting automated training sweeps"
     ],
     github: "https://github.com/rajnishkumar1906/mnist-classification",
     demo: "#",
-    image: "/mnist.png",
     category: "AI/ML",
     year: "2024"
   },
-
   {
-    id: 12,
+    id: 14,
     title: "Financial Fraud Detection",
-    description: "Machine learning-based fraud detection system trained on real-world datasets with anomaly detection algorithms and model explainability support.",
-    longDescription: "A machine learning system for detecting financial fraud using various algorithms including Isolation Forest, XGBoost, and neural networks. Features comprehensive data preprocessing, handling of imbalanced datasets with SMOTE, and model explainability using SHAP and LIME to understand why transactions are flagged as fraudulent. Includes interactive dashboard for monitoring.",
-    technologies: ["Python", "Scikit-learn", "XGBoost", "Pandas", "SHAP", "Imbalanced-learn", "FastAPI", "Plotly"],
+    description:
+      "An anomaly detector trained with SMOTE balancing, Isolation Forest, and explainability via SHAP/LIME.",
+    longDescription:
+      "Designed a machine learning fraud detector trained on heavily imbalanced datasets. Utilizes SMOTE to synthetically balance data, and trains XGBoost and Isolation Forest models. Integrates SHAP and LIME to produce explainable indicators showing exactly which transaction parameters triggered fraud warnings.",
+    technologies: ["Python", "Scikit-Learn", "XGBoost", "SMOTE", "SHAP", "LIME", "FastAPI"],
     features: [
-      "💳 Fraud transaction detection (95% precision)",
-      "📊 Anomaly detection algorithms",
-      "🔍 Model explainability (SHAP, LIME)",
-      "⚖️ Imbalanced data handling with SMOTE",
-      "📈 Real-time monitoring dashboard"
+      "💳 Highly precise fraud classification (95% precision on imbalanced data)",
+      "⚖️ SMOTE preprocessing to prevent majority-class learning bias",
+      "🔍 SHAP/LIME explainability plots outlining feature impact scores",
+      "⚡ FastAPI endpoint exposing classification inferences under 5ms"
     ],
     github: "https://github.com/rajnishkumar1906/FinancialFraudDetection",
     demo: "#",
-    image: "/fraud-detection.png",
     category: "AI/ML",
     year: "2024"
   },
-
   {
-    id: 13,
+    id: 15,
     title: "MERN Auth — Secure Authentication System",
-    description: "Production-ready authentication module with JWT, bcrypt, email-based SMTP verification, and protected routes for MERN stack applications.",
-    longDescription: "A production-ready authentication system for MERN applications featuring JWT tokens with refresh token rotation, bcrypt password hashing, email verification via SMTP (Nodemailer), password reset flow, and protected route middleware. Includes rate limiting, security headers (Helmet), and MongoDB session management.",
-    technologies: ["MERN", "JWT", "bcrypt", "Nodemailer", "Express", "MongoDB", "React", "Redis", "Helmet"],
+    description:
+      "A production-ready authorization gateway using JWTs, cookie security, refresh rotations, and SMTP email tests.",
+    longDescription:
+      "A boilerplate security module built for MERN stack portals. Employs JWT credentials in HTTP-only cookies, automated refresh token rotation to prevent session hijacking, and bcrypt password salting. Includes SMTP sign-up validation codes, rate-limiting middlewares, and Helmet header hardening.",
+    technologies: ["Express", "React", "Node.js", "MongoDB", "JWT", "bcrypt", "Nodemailer", "Redis"],
     features: [
-      "🔐 JWT authentication with refresh tokens",
-      "📧 Email verification (SMTP)",
-      "🔄 Password reset flow",
-      "🛡️ Protected routes with role-based access",
-      "⏱️ Rate limiting & security headers",
-      "📦 Redis session management"
+      "🔐 Double-cookie authentication (AccessToken + Rotate RefreshToken)",
+      "📧 Nodemailer verification (SMTP code validation during registration)",
+      "🛡️ Express Middlewares (Rate limiting, Helmet security headers, CORS guards)",
+      "🔄 Robust password reset flows with expiry hashes"
     ],
     github: "https://github.com/rajnishkumar1906/MERN-AUTH",
     demo: "#",
-    image: "/mernauth.png",
     category: "Full Stack",
     year: "2024"
   }
 ];
 
-// Export achievements from resume
 export const achievements = [
   {
-    title: "Problem Solving",
+    title: "DSA Problem Solving",
     description: "Solved 500+ algorithmic problems across LeetCode, GeeksforGeeks, Codeforces, and HackerRank."
   },
   {
-    title: "Python Rating",
-    description: "Earned a 5-Star rating in Python on HackerRank, validating advanced proficiency in Python syntax and algorithmic efficiency."
+    title: "HackerRank Ratings",
+    description: "Earned 5-Star rating on HackerRank, validating proficiency in Python syntax and algorithms."
   },
   {
-    title: "Competitive Programming",
-    description: "Regular participant in global competitive programming contests with peak LeetCode rating of 1364."
+    title: "LeetCode Contest Rating",
+    description: "Regular participant in global competitive programming contests with a peak LeetCode rating of 1364."
   }
 ];
 
-// Export certifications from resume
 export const certifications = [
   {
     title: "Complete Machine Learning and Data Science",
@@ -416,18 +423,17 @@ export const certifications = [
   {
     title: "Complete Computer Vision Bootcamp with PyTorch & TensorFlow",
     issuer: "Udemy",
-    year: "2024",
+    year: "2025",
     link: "https://drive.google.com/file/d/1xGqmvKTR2deFGsJbZU_eP5Rnow4xWNOO/view"
   }
 ];
 
-// Export education info
 export const education = [
   {
     institution: "Lovely Professional University",
     degree: "Bachelor of Technology in Computer Science and Engineering",
     period: "Oct 2022 – Present",
-    score: "CGPA: 7.23",
+    score: "CGPA: 7.29",
     location: "Phagwara, Punjab"
   },
   {
@@ -439,12 +445,11 @@ export const education = [
   }
 ];
 
-// Export experience
 export const experience = [
   {
     title: "AI Full Stack Engineer",
     company: "Personal Projects",
     period: "2024 – Present",
-    description: "Building production-grade AI applications and full-stack systems with focus on performance, scalability, and user experience. Developed three flagship projects: Finlyze (multi-agent stock analysis), LitScholar (AI librarian with RAG), and Nexora (real-time community platform)."
+    description: "Building production-grade AI applications and full-stack systems focusing on performance, modularity, and user experience. Built Finlyze (stock agents via LangGraph), LitScholar (librarian semantic search), AgroVision (disease scanning), and FutureHR (voice recruitment gateway)."
   }
 ];

@@ -1,157 +1,168 @@
 import React, { useState } from "react";
 import { personalInfo } from "../data/portfolioData";
+import { Mail, Github, Linkedin, Send, Compass, Phone } from "lucide-react";
 
 function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    message: ""
+    message: "",
   });
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    window.location.href = `mailto:${personalInfo.email}?subject=Portfolio Contact from ${formData.name}&body=${formData.message}%0A%0AFrom: ${formData.email}`;
+    // Drafts message details into native mail composer
+    window.location.href = `mailto:${personalInfo.email}?subject=Portfolio Contact from ${encodeURIComponent(formData.name)}&body=${encodeURIComponent(formData.message)}%0D%0A%0D%0AFrom: ${encodeURIComponent(formData.email)}`;
   };
 
   return (
-    <section id="contact" className="py-20 px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-4xl font-bold text-center mb-4">
-          Get In <span className="text-white/70">Touch</span>
+    <section
+      className="w-full max-w-4xl mx-auto px-6 py-12 md:py-16 flex flex-col justify-start transition-all duration-500"
+    >
+      
+      {/* Section Header */}
+      <div className="border-b border-slate-200/50 dark:border-slate-800/50 pb-5 mb-6 w-full">
+        <h2 className="text-2xl font-black uppercase tracking-widest text-slate-800 dark:text-white">
+          GET IN <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-700 via-amber-550 to-amber-400 dark:from-amber-400 dark:to-amber-200">TOUCH</span>
         </h2>
-        <p className="text-center text-white/60 mb-12">
-          Have a question or want to work together? Feel free to reach out!
-        </p>
+      </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          {/* Contact Info */}
-          <div className="space-y-6">
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6">
-              <h3 className="text-xl font-semibold mb-4">Contact Information</h3>
+      {/* Content columns */}
+      <div className="w-full">
+        <div className="grid md:grid-cols-2 gap-6">
+          
+          {/* Contact details list */}
+          <div className="space-y-4">
+            <div className="bg-white/20 dark:bg-gray-950/20 border border-white/20 dark:border-white/5 p-6 rounded-2xl">
+              <h3 className="text-xs font-black uppercase tracking-widest text-slate-800 dark:text-white mb-4">
+                Direct Inquiries
+              </h3>
               
-              <div className="space-y-4">
+              <div className="space-y-3">
                 <a
                   href={`mailto:${personalInfo.email}`}
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors duration-300"
+                  className="flex items-center gap-3 text-xs font-bold text-slate-650 dark:text-slate-350 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-1"
                 >
-                  <div className="backdrop-blur-md bg-white/20 p-2 rounded-full">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
+                  <div className="bg-amber-500/10 dark:bg-amber-400/10 p-2.5 border border-amber-500/20 dark:border-amber-400/10 rounded-full text-amber-700 dark:text-amber-300">
+                    <Mail size={16} />
                   </div>
                   <span>{personalInfo.email}</span>
+                </a>
+
+                <a
+                  href={`tel:${personalInfo.phone}`}
+                  className="flex items-center gap-3 text-xs font-bold text-slate-650 dark:text-slate-350 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-1"
+                >
+                  <div className="bg-amber-500/10 dark:bg-amber-400/10 p-2.5 border border-amber-500/20 dark:border-amber-400/10 rounded-full text-amber-700 dark:text-amber-300">
+                    <Phone size={16} />
+                  </div>
+                  <span>{personalInfo.phone}</span>
                 </a>
 
                 <a
                   href={personalInfo.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors duration-300"
+                  className="flex items-center gap-3 text-xs font-bold text-slate-650 dark:text-slate-350 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-1"
                 >
-                  <div className="backdrop-blur-md bg-white/20 p-2 rounded-full">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
-                    </svg>
+                  <div className="bg-amber-500/10 dark:bg-amber-400/10 p-2.5 border border-amber-500/20 dark:border-amber-400/10 rounded-full text-amber-600 dark:text-amber-400">
+                    <Github size={16} />
                   </div>
-                  <span>GitHub</span>
+                  <span>github.com/rajnishkumar1906</span>
                 </a>
 
                 <a
                   href={personalInfo.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-white/80 hover:text-white transition-colors duration-300"
+                  className="flex items-center gap-3 text-xs font-bold text-slate-650 dark:text-slate-350 hover:text-amber-600 dark:hover:text-amber-400 transition-colors py-1"
                 >
-                  <div className="backdrop-blur-md bg-white/20 p-2 rounded-full">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
+                  <div className="bg-amber-500/10 dark:bg-amber-400/10 p-2.5 border border-amber-500/20 dark:border-amber-400/10 rounded-full text-amber-700 dark:text-amber-300">
+                    <Linkedin size={16} />
                   </div>
-                  <span>LinkedIn</span>
+                  <span>linkedin.com/in/rajnishkumar1906</span>
                 </a>
               </div>
             </div>
 
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6">
-              <h3 className="text-xl font-semibold mb-2">Open for Opportunities</h3>
-              <p className="text-white/70">
-                I'm currently available for freelance work and full-time positions. 
-                Let's build something amazing together!
+            {/* Status details */}
+            <div className="bg-amber-500/5 dark:bg-amber-950/20 border border-amber-500/15 dark:border-amber-400/10 p-5 rounded-2xl">
+              <h3 className="text-xs font-black uppercase tracking-widest text-amber-700 dark:text-amber-400 mb-2 flex items-center gap-1.5 animate-pulse">
+                <Compass size={14} /> Available for Work
+              </h3>
+              <p className="text-xs font-medium leading-relaxed text-slate-600 dark:text-slate-400">
+                I am currently looking for software engineering roles focusing on AI/ML applications and Full Stack systems. Let's make something amazing.
               </p>
             </div>
           </div>
 
-          {/* Contact Form */}
+          {/* Email draft composer form */}
           <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="backdrop-blur-md bg-white/10 border border-white/20 rounded-2xl p-6">
-              <h3 className="text-xl font-semibold mb-4">Send a Message</h3>
-              
-              <div className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-white/80 mb-1">
-                    Name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 bg-white/10 border border-white/30 rounded-lg focus:outline-none focus:border-white/50 text-white placeholder-white/40"
-                    placeholder="Your name"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-1">
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-2 bg-white/10 border border-white/30 rounded-lg focus:outline-none focus:border-white/50 text-white placeholder-white/40"
-                    placeholder="your@email.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-1">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="4"
-                    className="w-full px-4 py-2 bg-white/10 border border-white/30 rounded-lg focus:outline-none focus:border-white/50 text-white placeholder-white/40 resize-none"
-                    placeholder="Your message here..."
-                  ></textarea>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full backdrop-blur-md bg-white/30 border border-white/40 px-6 py-3 rounded-lg font-medium hover:bg-white/40 transition-all duration-300"
-                >
-                  Send Message
-                </button>
+            <div className="bg-white/55 dark:bg-gray-950/25 border border-white/30 dark:border-white/5 p-5 rounded-2xl space-y-4">
+              <div>
+                <label htmlFor="name" className="block text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+                  Your Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3.5 py-2.5 bg-white/65 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500/40 dark:focus:border-amber-400/30 focus:shadow-[0_0_12px_rgba(145,99,60,0.12)] transition-all duration-300"
+                  placeholder="Enter your name"
+                />
               </div>
+
+              <div>
+                <label htmlFor="email" className="block text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+                  Email Address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-3.5 py-2.5 bg-white/65 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500/40 dark:focus:border-amber-400/30 focus:shadow-[0_0_12px_rgba(145,99,60,0.12)] transition-all duration-300"
+                  placeholder="name@example.com"
+                />
+              </div>
+
+              <div>
+                <label htmlFor="message" className="block text-[10px] font-black uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1.5">
+                  Message Body
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows="3"
+                  className="w-full px-3.5 py-2.5 bg-white/65 dark:bg-slate-900/30 border border-slate-200/50 dark:border-slate-800/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:border-amber-500/40 dark:focus:border-amber-400/30 focus:shadow-[0_0_12px_rgba(145,99,60,0.12)] transition-all duration-300 resize-none"
+                  placeholder="Hi Rajnish, let's talk about..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full flex items-center justify-center gap-2 bg-gradient-to-r from-amber-800 to-amber-600 hover:from-amber-750 hover:to-amber-550 text-white font-extrabold uppercase text-[10px] tracking-widest py-3 px-6 rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:scale-102"
+              >
+                Send Message <Send size={12} />
+              </button>
             </div>
           </form>
+
         </div>
       </div>
     </section>
