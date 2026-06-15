@@ -63,19 +63,9 @@ function Navbar({ theme, toggleTheme }) {
             {/* Logo */}
             <a
               href="#"
-              className="flex items-center gap-2 group"
+              className="text-lg font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-950 via-amber-900 to-amber-700 dark:from-amber-400 dark:via-amber-500 dark:to-amber-300"
             >
-              <img
-                src={personalInfo.avatar}
-                alt="Logo"
-                className="w-8 h-8 rounded-full object-cover border border-amber-900/30 dark:border-amber-400/30 group-hover:scale-105 transition-transform duration-300"
-                onError={(e) => {
-                  e.target.src = "https://github.com/identicons/rajnishkumar1906.png";
-                }}
-              />
-              <span className="text-sm md:text-base font-black tracking-widest uppercase text-transparent bg-clip-text bg-gradient-to-r from-amber-950 via-amber-900 to-amber-700 dark:from-amber-400 dark:via-amber-500 dark:to-amber-300">
-                {personalInfo.name.toUpperCase()}
-              </span>
+              {personalInfo.name.toUpperCase()}
             </a>
 
             {/* Desktop Menu Items */}
