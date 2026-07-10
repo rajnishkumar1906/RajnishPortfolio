@@ -75,15 +75,15 @@ export const projects = [
     description:
       "A multi-agent AI system orchestrating specialized agents for collaborative stock research, technical analysis, and sentiment parsing.",
     longDescription:
-      "Finlyze is a production-grade AI stock research platform powered by LangGraph. It orchestrates a specialized agent ecosystem (Researcher, Analyst, and Writer) to quantify technical indicators and aggregate sentiment. Features a yfinance and DuckDuckGo data pipeline collecting 50+ technical indicators and 150+ daily news reports for Gemini-driven NLP sentiment analysis. Utilizes asynchronous concurrency to cut data retrieval latency by 55% and implements fpdf2 on a Streamlit analytics hub for sub-2s automated PDF report downloads. Finlyze accelerates insights discovery by 70% for retail and professional investment workflows.",
+      "Finlyze is a production-grade AI stock research platform powered by LangGraph. It orchestrates a specialized agent ecosystem (Researcher, Analyst, and Writer) to quantify technical indicators and aggregate sentiment. Features a yfinance and DuckDuckGo data pipeline collecting 50+ technical indicators and 150+ daily news reports for Gemini-driven NLP sentiment analysis. Utilizes asynchronous concurrency to cut data retrieval latency by 55% and implements fpdf2 on a React analytics dashboard with a Flask API backend for sub-2s automated PDF report downloads. Finlyze accelerates insights discovery by 70% for retail and professional investment workflows.",
     technologies: [
-      "Python",
+      "React",
+      "Vite",
+      "Flask",
       "LangGraph",
       "Gemini AI",
-      "FastAPI",
-      "Streamlit",
+      "SQLite",
       "yfinance",
-      "NLP",
       "Async Python",
       "fpdf2"
     ],
@@ -92,10 +92,10 @@ export const projects = [
       "📈 50+ Technical Indicators (Automated quantitative evaluation and charts)",
       "📰 150+ Daily News Reports Scraped (Gemini NLP sentiment trend modeling)",
       "⚡ High-Volume Async Pipeline (Cuts data fetching latency by 55%, sub-2s page loads)",
-      "📄 On-the-fly PDF Generation (Streamlit analytics hub with fpdf2 exports)"
+      "📄 On-the-fly PDF Generation (React dashboard with Flask backend and fpdf2 exports)"
     ],
     github: "https://github.com/rajnishkumar1906/Finlyze",
-    demo: "https://finlyze.onrender.com",
+    demo: "https://finlyze.vercel.app",
     category: "AI/ML",
     year: "2026"
   },
